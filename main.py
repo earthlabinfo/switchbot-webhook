@@ -36,6 +36,7 @@ def update_switchbot_webhook_setting(new_url):
     ).digest()
     sign = base64.b64encode(sign).decode("utf-8")
 
+    #################################################################################################################設定取得
     # webhook 情報取得リクエスト
     url = "https://api.switch-bot.com/v1.1/webhook/queryWebhook"
     headers = {
@@ -96,6 +97,7 @@ def update_switchbot_webhook_setting(new_url):
     result = response.json()  # curl -s の結果にあたる
     print(result)
 
+    #################################################################################################################設定再取得
     # webhook 情報取得リクエスト
     url = "https://api.switch-bot.com/v1.1/webhook/queryWebhook"
     headers = {
@@ -120,12 +122,16 @@ def generate_random_path(length: int = 32) -> str:
     characters = string.ascii_letters + string.digits
     return ''.join(random.choice(characters) for _ in range(length))
 
-############################################################################################################
+
+    #################################################################################################################API受信用URLランダム生成、webhook呼び出し側設定
 random_path = f"/webhook/switchbot/{generate_random_path()}/"
 print(random_path)
 
 update_switchbot_webhook_setting(waiturl_prefix+random_path)
 
+
+
+    #################################################################################################################APIコールされた場合の動作
 @app.post(f"{random_path}")
 async def call_switchbot(request: Request):
     #print(request.headers)
