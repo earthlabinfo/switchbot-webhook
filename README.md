@@ -54,3 +54,10 @@ INFO:     54.64.81.21:53238 - "POST /webhook/switchbot/pFOUvPdXF6AeNvmr4g28t9q2o
 b'{"eventType":"changeReport","eventVersion":"1","context":{"battery":100,"deviceMac":"HEREISYOURMAC","deviceType":"WoMeter","humidity":73,"scale":"CELSIUS","temperature":9.8,"timeOfSample":1735726098873}}'
 INFO:     54.64.81.21:2593 - "POST /webhook/switchbot/pFOUvPdXF6AeNvmr4g28t9q2o2SZ0Bzp/ HTTP/1.1" 200 OK
 ```
+
+
+## 
+
+It seems that the Switchbot API does not provide a way to verify the source of webhooks. In this program, we generate a receiving URL with a random string and register it with the Switchbot API. Knowing this unique URL is treated as proof of a valid request.
+
+The sample uses HTTP, but note that HTTP does not hide the URL information, so it is not secure in practice. Use HTTPS instead if necessary.
