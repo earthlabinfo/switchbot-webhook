@@ -22,6 +22,8 @@ wget https://raw.githubusercontent.com/earthlabinfo/switchbot-webhook/refs/heads
 ## how to install 2(hypercorn)
 
 on AlmaLinux 9
+
+maybe it is not work, you hove to use good certificate file.(maybe webhook system checks certificate and reject self-signed.)
 ```bash
 dnf install python3-pip wget
 pip3 install --upgrade pip
