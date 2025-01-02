@@ -20,7 +20,7 @@ import logging
 import requests
 import sqlite3
 
-DB_NAME = "example.db"
+DB_NAME = "/data/switchbot-webhook.db"
 TABLE_NAME = "records"
 logger = logging.getLogger('uvicorn')
 
