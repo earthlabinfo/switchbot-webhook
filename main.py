@@ -159,7 +159,7 @@ def fetch_all_data():
     """書き込まれた全データを取得して返す。"""
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
-    cur.execute(f"SELECT id, data FROM records")
+    cur.execute(f"SELECT data FROM records")
     rows = cur.fetchall()
     conn.close()
     return rows
